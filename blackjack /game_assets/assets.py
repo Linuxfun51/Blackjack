@@ -6,7 +6,7 @@ class PlayerBase:
 	def __init__(self):
 		self._name = None
 		self._credits = 0
-		self._hand = []
+		self._hand = [] 
 		self._in_game = True
 	def create(self):
 		self._credits = random.randint(100, 1000)
