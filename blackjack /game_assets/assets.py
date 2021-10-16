@@ -44,7 +44,22 @@ class PlayerBase:
 		
 
 class HumanPlayer(PlayerBase):
-	pass
+	def create(self):
+		self._name = input("What is your name?")
+		self._credits = random.randint(100, 1000)
+		
+
+	def draw_card(self, deck):
+		hand_value = self.count_hand()
+		print(f"Your hand value : {hand_value}")
+		print(f"Your cards: {self._hand}")
+		result = input("Do you want to draw a new card? (y/n)")
+		if result == "y":
+			new_card = deck.give_card()
+			self._hand.append(new_card)
+		else:
+			print("You passed.")
+			self._in_game = False
 
 
 class AiPlayer(PlayerBase):
@@ -121,7 +136,7 @@ if __name__ == '__main__':
 	deck = Deck()
 	deck.create()
 
-	player1 = AiPlayer()
+	player1 = HumanPlayer()
 	player1.create()
 
 	player1.draw_card(deck)
